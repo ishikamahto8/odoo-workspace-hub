@@ -1,0 +1,585 @@
+/* ==========================================================================
+   ENTERPRISE COOL SLATE & INDUSTRIAL STEEL NAVY MATRIX PAYROLL STYLESHEET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+    --bg-dark-navy: #0F172A;      /* Deep Slate Charcoal Background */
+    --card-bg-navy: #1E293B;      /* Premium Container Slate Navy */
+    --primary-sky-blue: #38BDF8;  /* Vivid Steel Cyan Blue Accent */
+    --bg-off-white: #F1F5F9;      /* Smooth Light Gray Backcloth Canvas */
+    --white: #FFFFFF;             
+    --text-muted: #94A3B8;
+    --border-color: #E2E8F0;
+    --absent-red: #F43F5E;
+}
+
+body.dashboard-body {
+    background-color: var(--bg-off-white);
+    color: #334155;
+    min-height: 100vh;
+}
+
+/* Header Area Design Layout Framework */
+.dash-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 0.85rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 360px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.1rem;
+    color: #64748B;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 0.65rem 1rem 0.65rem 2.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #F8FAFC;
+    outline: none;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+}
+
+.search-wrapper input:focus {
+    border-color: #0EA5E9;
+    background-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.user-profile-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.icon-btn {
+    color: #64748B;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+.user-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.user-title {
+    font-size: 0.75rem;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.user-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background-color: var(--card-bg-navy);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+/* Main Main Layout Elements Wrappers */
+.dash-main-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.title-area h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.02em;
+}
+
+.title-area p {
+    color: #64748B;
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+}
+
+.header-action-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background-color: #0EA5E9;
+    color: var(--white);
+    border: none;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+.btn-primary:hover { background-color: #0284C7; }
+
+.btn-secondary-outline {
+    background-color: var(--white);
+    color: #475569;
+    border: 1px solid var(--border-color);
+    padding: 0.65rem 1.25rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+.btn-secondary-outline:hover { background-color: #F8FAFC; color: #1E293B; }
+
+/* ==========================================================================
+   ADMIN LAYOUT SYSTEM GRIDS & TABLES
+   ========================================================================== */
+.payroll-grid-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.workspace-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+.panel-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.panel-header-row h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.cycle-badge {
+    background-color: #F0F9FF;
+    color: #0369A1;
+    border: 1px solid #B9E6FE;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+.table-responsive { overflow-x: auto; }
+
+.payroll-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.payroll-table th {
+    padding: 0.85rem 1rem;
+    border-bottom: 2px solid var(--border-color);
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.payroll-table td {
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.92rem;
+    vertical-align: middle;
+}
+
+.emp-profile-block {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.avatar-thumb {
+    width: 34px;
+    height: 34px;
+    background-color: #E2E8F0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #475569;
+}
+
+.meta-info { display: flex; flex-direction: column; }
+.meta-info strong { color: #1E293B; }
+.meta-info span { font-size: 0.75rem; color: #64748B; margin-top: 0.1rem; }
+
+.role-text-tag {
+    font-size: 0.82rem;
+    color: #475569;
+    font-weight: 500;
+}
+
+.btn-table-action {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-table-action:hover {
+    border-color: #0EA5E9;
+    color: #0EA5E9;
+    background-color: rgba(14, 165, 233, 0.02);
+}
+
+/* ==========================================================================
+   SIDEBAR COMPLIANCE CONTROLS WIDGET PANEL
+   ========================================================================== */
+.sidebar-widgets-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.widget-card { padding: 1.5rem; }
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+.widget-icon { color: #0EA5E9; font-size: 1.1rem; }
+.widget-header h3 { font-size: 1.05rem !important; }
+
+.compliance-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.compliance-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.compliance-checklist input[type="checkbox"] {
+    margin-top: 0.25rem;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.compliance-checklist label {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.compliance-checklist label strong {
+    font-size: 0.88rem;
+    color: #1E293B;
+    font-weight: 600;
+}
+
+.compliance-checklist label span {
+    font-size: 0.75rem;
+    color: #64748B;
+    margin-top: 0.15rem;
+    line-height: 1.4;
+}
+
+.btn-text-action {
+    background: transparent;
+    border: none;
+    color: #0EA5E9;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.btn-text-action:hover { color: #0284C7; }
+
+.disbursement-alert-card {
+    background-color: var(--card-bg-navy);
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.disbursement-alert-card::after {
+    content: "\f0d6";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: -10px;
+    bottom: -15px;
+    font-size: 6rem;
+    color: rgba(255, 255, 255, 0.03);
+}
+
+.alert-meta-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.alert-date-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.alert-days-remaining-badge {
+    align-self: flex-start;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #E2E8F0;
+}
+
+/* ==========================================================================
+   EMPLOYEE COMPENSATION MODULE INDIVIDUAL COMPONENT CARDS
+   ========================================================================== */
+.personal-breakdown-panel { margin-top: 1rem; }
+
+.title-with-shield {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.secure-icon { font-size: 1.75rem; color: #0EA5E9; }
+
+.secure-meta {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748B;
+    letter-spacing: 0.05em;
+    margin-top: 0.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.verification-timestamp {
+    font-size: 0.82rem;
+    color: #64748B;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.verification-timestamp i { color: #0EA5E9; }
+
+.salary-breakdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.breakdown-card-module {
+    background-color: #F8FAFC;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.card-module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.65rem;
+}
+
+.card-module-header h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1E293B;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.icon-toggle { color: #94A3B8; font-size: 0.88rem; cursor: pointer; }
+.text-red { color: #FDA4AF !important; }
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed #E2E8F0;
+}
+.metric-row:last-child { border-bottom: none; }
+
+.metric-row span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748B;
+    letter-spacing: 0.02em;
+}
+
+.metric-row strong {
+    font-size: 0.95rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+.net-payout-display-card {
+    background-color: var(--bg-dark-navy);
+    border-radius: 10px;
+    padding: 1.75rem;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.3);
+}
+
+.payout-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payout-card-header span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #94A3B8;
+}
+
+.payout-bank-icon { color: #0EA5E9; font-size: 1.1rem; }
+.payout-amount-area { margin: 1.5rem 0; }
+
+.estimation-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #64748B;
+    letter-spacing: 0.05em;
+    display: block;
+}
+
+.payout-amount-area h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-top: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.payout-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #334155;
+    padding-top: 0.85rem;
+    font-size: 0.82rem;
+}
+
+.payout-card-footer span { color: #94A3B8; }
+.payout-card-footer strong { color: var(--primary-sky-blue); font-weight: 700; }
+
+.system-disclaimer-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    background-color: #F8FAFC;
+    border: 1px solid var(--border-color);
+    padding: 0.85rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    color: #64748B;
+    line-height: 1.5;
+}
+
+.system-disclaimer-bar i { color: #0EA5E9; margin-top: 0.15rem; font-size: 0.9rem; }
+.border-bottom { border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem; }
+.text-right { text-align: right; }
+
+@media (max-width: 1100px) {
+    .payroll-grid-top { grid-template-columns: 1fr; gap: 2rem; }
+    .salary-breakdown-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}

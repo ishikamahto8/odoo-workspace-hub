@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise HRMS - Admin Payroll Control</title>
+    <link rel="stylesheet" href="payroll-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+    <header class="dash-navbar">
+        <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search employee payroll records or status indicators...">
+        </div>
+        <div class="user-profile-controls">
+            <i class="far fa-bell icon-btn"></i>
+            <i class="fas fa-sliders-h icon-btn"></i>
+            <div class="user-meta">
+                <span class="user-name">Your HR Name Here</span>
+                <span class="user-title">HR Administrator</span>
+            </div>
+            <div class="user-avatar">HR</div>
+        </div>
+    </header>
+
+    <div class="dash-main-layout">
+        
+        <section class="module-header">
+            <div class="title-area">
+                <h2>Payroll & Salary Management</h2>
+                <p>Manage organization-wide compensation structures and payroll processing workflows.</p>
+            </div>
+            <div class="header-action-row">
+                <button class="btn-secondary-outline"><i class="fas fa-download"></i> Export Report</button>
+                <button class="btn-primary" id="runPayrollBtn"><i class="fas fa-plus"></i> Run New Payroll</button>
+            </div>
+        </section>
+
+        <div class="payroll-grid-top">
+            
+            <section class="workspace-card table-panel">
+                <div class="panel-header-row">
+                    <h3>Admin Control Center</h3>
+                    <span class="cycle-badge">ACTIVE CYCLE: ENTER MONTH/YEAR</span>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="payroll-table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Designation</th>
+                                <th>Gross Salary</th>
+                                <th>Last Update</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="emp-profile-block">
+                                        <div class="avatar-thumb">E1</div>
+                                        <div class="meta-info">
+                                            <strong>Employee Name 1</strong>
+                                            <span>ID: XXX-XXXX</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="role-text-tag">Designation Title 1</span></td>
+                                <td><strong>$0.00</strong></td>
+                                <td>DD MM YYYY</td>
+                                <td class="text-right"><button class="btn-table-action update-struct-btn">Update Structure</button></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div class="emp-profile-block">
+                                        <div class="avatar-thumb">E2</div>
+                                        <div class="meta-info">
+                                            <strong>Employee Name 2</strong>
+                                            <span>ID: XXX-XXXX</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="role-text-tag">Designation Title 2</span></td>
+                                <td><strong>$0.00</strong></td>
+                                <td>DD MM YYYY</td>
+                                <td class="text-right"><button class="btn-table-action update-struct-btn">Update Structure</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="emp-profile-block">
+                                        <div class="avatar-thumb">E3</div>
+                                        <div class="meta-info">
+                                            <strong>Employee Name 3</strong>
+                                            <span>ID: XXX-XXXX</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="role-text-tag">Designation Title 3</span></td>
+                                <td><strong>$0.00</strong></td>
+                                <td>DD MM YYYY</td>
+                                <td class="text-right"><button class="btn-table-action update-struct-btn">Update Structure</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <aside class="sidebar-widgets-column">
+                
+                <div class="workspace-card widget-card">
+                    <div class="widget-header">
+                        <i class="fas fa-balance-scale-left widget-icon"></i>
+                        <h3>Payroll Accuracy</h3>
+                    </div>
+                    
+                    <ul class="compliance-checklist">
+                        <li>
+                            <input type="checkbox" id="chk1" checked>
+                            <label for="chk1">
+                                <strong>Verify Bank Details</strong>
+                                <span>Cross-check active employee account allocations.</span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="chk2">
+                            <label for="chk2">
+                                <strong>Check Overtime Logs</strong>
+                                <span>Reconcile biometric operational logging hours.</span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="chk3">
+                            <label for="chk3">
+                                <strong>Validate Tax Exemptions</strong>
+                                <span>Update adjustments based on verified submittals.</span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="chk4">
+                            <label for="chk4">
+                                <strong>Review Bonus Payouts</strong>
+                                <span>Departmental performance incentive verification.</span>
+                            </label>
+                        </li>
+                    </ul>
+                    
+                    <button class="btn-text-action"><i class="fas fa-plus"></i> Add Custom Check</button>
+                </div>
+
+                <div class="disbursement-alert-card">
+                    <span class="alert-meta-label">Next Disbursement Target</span>
+                    <h2 class="alert-date-title">Month DD, YYYY</h2>
+                    <span class="alert-days-remaining-badge"><i class="far fa-clock"></i> XX Days Remaining</span>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <script src="payroll.js"></script>
+</body>
+</html>
