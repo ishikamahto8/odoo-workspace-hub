@@ -44,6 +44,8 @@ Before setting up the project, make sure the following programs are installed on
 2.  **PostgreSQL Database:** [Download from PostgreSQL Windows Installer](https://www.postgresql.org/download/windows/)
 3.  **Code Editor (Optional but recommended):** [VS Code](https://code.visualstudio.com/)
 
+---
+
 ### Running the Backend
 
 1. Navigate to the backend directory:
@@ -69,6 +71,8 @@ Before setting up the project, make sure the following programs are installed on
 ```
 
    The backend typically runs on `http://localhost:5000` (or as configured in `.env`).
+
+ ---
 
 ### Running the Frontend
 
