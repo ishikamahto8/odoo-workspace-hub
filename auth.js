@@ -1,6 +1,6 @@
 /**
- * Authentication and Authorization Sandbox Controller
- * Handles client-side identity validation (AuthN) and role scope routing (AuthZ)
+ * Authentication and Authorization Controller
+ * Handles client-side identity validation and role scope routing
  */
 
 document.addEventListener("DOMContentLoaded", function () {
