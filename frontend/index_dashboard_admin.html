@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | SkyHigh HRMS</title>
+    <link rel="stylesheet" href="style_dashboard_admin.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="index_dashboard_admin.html" aria-label="SkyHigh HRMS admin dashboard">
+            <span class="brand-mark">SH</span>
+            <span>SkyHigh HRMS</span>
+        </a>
+
+        <nav class="side-nav" aria-label="Primary">
+            <a class="active" href="index_dashboard_admin.html">Dashboard</a>
+            <a href="index_profile.html">Profile</a>
+            <a href="index_attendance.html">Attendance</a>
+            <a href="index_timeoff.html">Time-Off</a>
+            <a href="index_payroll.html">Payroll</a>
+        </nav>
+
+        <div class="role-card">
+            <span class="role-pill">Admin / HR</span>
+            <strong id="adminName">HR Officer</strong>
+            <button class="ghost-btn" type="button" id="logoutBtn">Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-shell">
+        <header class="topbar">
+            <button class="menu-btn" type="button" id="menuBtn" aria-label="Toggle navigation">☰</button>
+            <div>
+                <p class="eyebrow">Dashboard</p>
+                <h1>HR overview</h1>
+            </div>
+            <div class="date-chip" id="todayLabel">Today</div>
+        </header>
+
+        <main class="content">
+            <section class="overview-grid" aria-label="Admin overview">
+                <article class="metric-card">
+                    <span class="metric-icon">EL</span>
+                    <p>Employee List</p>
+                    <strong id="employeeCount">0</strong>
+                    <a href="employees.html">Open list</a>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon">AR</span>
+                    <p>Attendance Records</p>
+                    <strong id="presentCount">0</strong>
+                    <a href="index_attendance.html">Review records</a>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-icon">LA</span>
+                    <p>Pending Leave Approvals</p>
+                    <strong id="pendingLeaveCount">0</strong>
+                    <a href="index_timeoff.html">Process requests</a>
+                </article>
+            </section>
+
+            <section class="dashboard-grid">
+                <article class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Workforce</p>
+                            <h2>Employee list</h2>
+                        </div>
+                        <input type="search" id="employeeSearch" placeholder="Search employees">
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Access</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTable"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <aside class="panel">
+                    <div class="panel-header compact">
+                        <div>
+                            <p class="eyebrow">Leave queue</p>
+                            <h2>Pending approvals</h2>
+                        </div>
+                    </div>
+                    <div class="approval-list" id="approvalList"></div>
+                </aside>
+            </section>
+        </main>
+    </div>
+
+    <script src="script_dashboard_admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll | SkyHigh HRMS</title>
+    <link rel="stylesheet" href="style_payroll.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" id="dashboardLink"><span class="brand-mark">SH</span><span>SkyHigh HRMS</span></a>
+        <nav class="side-nav">
+            <a href="#" id="navDashboard">Dashboard</a>
+            <a href="index_profile.html">Profile</a>
+            <a href="index_attendance.html">Attendance</a>
+            <a href="index_timeoff.html">Time-Off</a>
+            <a class="active" href="index_payroll.html">Payroll</a>
+        </nav>
+        <div class="role-card"><span class="role-pill" id="roleLabel">Employee</span><strong id="userName">Employee</strong><button class="ghost-btn" type="button" id="logoutBtn">Logout</button></div>
+    </aside>
+    <div class="app-shell">
+        <header class="topbar"><button class="menu-btn" type="button" id="menuBtn">Menu</button><div><p class="eyebrow">Payroll</p><h1>Salary and compensation</h1></div></header>
+        <main class="content">
+            <section class="payroll-grid">
+                <article class="panel">
+                    <p class="eyebrow">Employee view</p>
+                    <h2>Current salary</h2>
+                    <div class="salary-list">
+                        <div><span>Basic</span><strong>45000</strong></div>
+                        <div><span>Allowance</span><strong>18000</strong></div>
+                        <div><span>Deductions</span><strong>5200</strong></div>
+                        <div><span>Net pay</span><strong>57800</strong></div>
+                    </div>
+                </article>
+                <article class="panel" id="adminPayroll">
+                    <p class="eyebrow">Admin controls</p>
+                    <h2>Salary structures</h2>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Employee</th><th>Gross</th><th>Net</th><th>Action</th></tr></thead>
+                            <tbody id="payrollRows"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+    <script src="script_payroll.js"></script>
+</body>
+</html>

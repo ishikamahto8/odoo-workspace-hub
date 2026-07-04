@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance | SkyHigh HRMS</title>
+    <link rel="stylesheet" href="style_attendance.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" id="dashboardLink"><span class="brand-mark">SH</span><span>SkyHigh HRMS</span></a>
+        <nav class="side-nav">
+            <a href="#" id="navDashboard">Dashboard</a>
+            <a href="index_profile.html">Profile</a>
+            <a class="active" href="index_attendance.html">Attendance</a>
+            <a href="index_timeoff.html">Time-Off</a>
+            <a href="index_payroll.html">Payroll</a>
+        </nav>
+        <div class="role-card">
+            <span class="role-pill" id="roleLabel">Employee</span>
+            <strong id="userName">Employee</strong>
+            <button class="ghost-btn" type="button" id="logoutBtn">Logout</button>
+        </div>
+    </aside>
+    <div class="app-shell">
+        <header class="topbar">
+            <button class="menu-btn" type="button" id="menuBtn">Menu</button>
+            <div><p class="eyebrow">Attendance</p><h1>Daily and weekly attendance</h1></div>
+        </header>
+        <main class="content module-grid">
+            <section class="panel">
+                <p class="eyebrow">Today</p>
+                <h2>Check-in console</h2>
+                <div class="status-line"><span class="status-dot" id="statusDot"></span><strong id="statusText">Not checked in</strong></div>
+                <div class="clock" id="clock">00:00:00</div>
+                <div class="action-row">
+                    <button class="primary-btn" id="checkInBtn" type="button">Check in</button>
+                    <button class="secondary-btn" id="checkOutBtn" type="button" disabled>Check out</button>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-header">
+                    <div><p class="eyebrow">Weekly view</p><h2>Attendance records</h2></div>
+                    <select id="viewSelect"><option value="weekly">Weekly</option><option value="daily">Daily</option></select>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Date</th><th>Check in</th><th>Check out</th><th>Status</th></tr></thead>
+                        <tbody id="attendanceRows"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script_attendance.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard | SkyHigh HRMS</title>
+    <link rel="stylesheet" href="style_dashboard_employee.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="index_dashboard_employee.html" aria-label="SkyHigh HRMS employee dashboard">
+            <span class="brand-mark">SH</span>
+            <span>SkyHigh HRMS</span>
+        </a>
+
+        <nav class="side-nav" aria-label="Primary">
+            <a class="active" href="index_dashboard_employee.html">Dashboard</a>
+            <a href="index_profile.html">Profile</a>
+            <a href="index_attendance.html">Attendance</a>
+            <a href="index_timeoff.html">Time-Off</a>
+            <a href="index_payroll.html">Payroll</a>
+        </nav>
+
+        <div class="role-card">
+            <span class="role-pill">Employee</span>
+            <strong id="employeeName">Employee</strong>
+            <button class="ghost-btn" type="button" id="logoutBtn">Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-shell">
+        <header class="topbar">
+            <button class="menu-btn" type="button" id="menuBtn" aria-label="Toggle navigation">☰</button>
+            <div>
+                <p class="eyebrow">Dashboard</p>
+                <h1>Employee self-service</h1>
+            </div>
+            <div class="date-chip" id="todayLabel">Today</div>
+        </header>
+
+        <main class="content">
+            <section class="welcome-panel">
+                <div>
+                    <p class="eyebrow">Good day</p>
+                    <h2 id="welcomeName">Welcome back</h2>
+                    <p>Your attendance, profile, time-off, and payroll actions are ready.</p>
+                </div>
+                <button class="primary-btn" type="button" id="quickLogoutBtn">Logout</button>
+            </section>
+
+            <section class="quick-grid" aria-label="Quick access">
+                <a class="quick-card" href="index_profile.html">
+                    <span class="quick-icon">PR</span>
+                    <strong>Profile</strong>
+                    <p>Personal details, documents, job data, and contact updates.</p>
+                </a>
+                <a class="quick-card" href="index_attendance.html">
+                    <span class="quick-icon">AT</span>
+                    <strong>Attendance</strong>
+                    <p>Daily check-in status and weekly attendance history.</p>
+                </a>
+                <a class="quick-card" href="index_timeoff.html">
+                    <span class="quick-icon">LR</span>
+                    <strong>Leave Requests</strong>
+                    <p>Apply for paid, sick, or unpaid leave and view request status.</p>
+                </a>
+                <a class="quick-card" href="index_payroll.html">
+                    <span class="quick-icon">PY</span>
+                    <strong>Payroll</strong>
+                    <p>Read-only salary structure, deductions, and monthly net pay.</p>
+                </a>
+            </section>
+
+            <section class="dashboard-grid">
+                <article class="panel attendance-panel">
+                    <div>
+                        <p class="eyebrow">Today</p>
+                        <h2>Attendance</h2>
+                    </div>
+                    <div class="attendance-state">
+                        <span class="status-dot" id="statusDot"></span>
+                        <strong id="attendanceStatus">Not checked in</strong>
+                    </div>
+                    <div class="time-display" id="liveClock">00:00:00</div>
+                    <div class="action-row">
+                        <button class="primary-btn" type="button" id="checkInBtn">Check in</button>
+                        <button class="secondary-btn" type="button" id="checkOutBtn" disabled>Check out</button>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <p class="eyebrow">Snapshot</p>
+                    <h2>My week</h2>
+                    <div class="week-list" id="weekList"></div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <script src="script_dashboard_employee.js"></script>
+</body>
+</html>

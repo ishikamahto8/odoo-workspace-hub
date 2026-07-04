@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | SkyHigh HRMS</title>
+    <link rel="stylesheet" href="style_signup.css">
+</head>
+<body class="auth-page">
+    <main class="auth-shell">
+        <section class="auth-brand" aria-label="SkyHigh HRMS">
+            <div class="brand-mark">SH</div>
+            <h1>Join SkyHigh HRMS</h1>
+            <p>Create a role-aware account for HR operations or employee self-service.</p>
+        </section>
+
+        <section class="auth-panel">
+            <div class="auth-card">
+                <div class="auth-heading">
+                    <p class="eyebrow">Account setup</p>
+                    <h2>Sign up</h2>
+                </div>
+
+                <div class="alert success-alert" id="signupSuccess" role="status" hidden>
+                    Account created. Redirecting to your dashboard.
+                </div>
+
+                <form id="signupForm" novalidate>
+                    <div class="field">
+                        <label for="employeeId">Employee ID</label>
+                        <input type="text" id="employeeId" name="employeeId" autocomplete="off" placeholder="EMP-1042" required>
+                        <small class="field-error">Employee ID is required.</small>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="name@company.com" required>
+                        <small class="field-error">Enter a valid email address.</small>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" placeholder="Minimum 8 characters" required>
+                        <small class="field-error">Use at least 8 characters.</small>
+                    </div>
+
+                    <div class="field">
+                        <label for="role">Role</label>
+                        <select id="role" name="role" required>
+                            <option value="employee">Employee</option>
+                            <option value="hr">HR Officer</option>
+                        </select>
+                    </div>
+
+                    <button class="primary-btn" type="submit">Create account</button>
+                </form>
+
+                <p class="switch-copy">Already registered? <a href="index_signin.html">Sign in</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script_signup.js"></script>
+</body>
+</html>

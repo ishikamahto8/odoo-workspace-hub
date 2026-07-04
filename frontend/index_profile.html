@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | SkyHigh HRMS</title>
+    <link rel="stylesheet" href="style_profile.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" id="dashboardLink"><span class="brand-mark">SH</span><span>SkyHigh HRMS</span></a>
+        <nav class="side-nav">
+            <a href="#" id="navDashboard">Dashboard</a>
+            <a class="active" href="index_profile.html">Profile</a>
+            <a href="index_attendance.html">Attendance</a>
+            <a href="index_timeoff.html">Time-Off</a>
+            <a href="index_payroll.html">Payroll</a>
+        </nav>
+        <div class="role-card">
+            <span class="role-pill" id="roleLabel">Employee</span>
+            <strong id="userName">Rahul Sharma</strong>
+            <button class="ghost-btn" type="button" id="logoutBtn">Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-shell">
+        <header class="topbar">
+            <button class="menu-btn" type="button" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+            <div>
+                <p class="eyebrow">Profile</p>
+                <h1>Employee profile</h1>
+            </div>
+            <button class="primary-btn" type="button" id="editBtn">Edit profile</button>
+        </header>
+
+        <main class="content profile-layout">
+            <section class="panel identity-panel">
+                <img class="profile-photo" id="profilePhoto" src="https://i.pravatar.cc/160?u=employee" alt="Profile photo">
+                <input class="hidden-file" type="file" id="photoInput" accept="image/*">
+                <button class="secondary-btn editable employee-edit" type="button" id="photoBtn" disabled>Change picture</button>
+                <h2 id="profileName">Rahul Sharma</h2>
+                <p>Software Engineer</p>
+                <span class="status-pill">Active</span>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <p class="eyebrow">Personal</p>
+                        <h2>Personal details</h2>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <label>Employee ID<input value="EMP101" data-admin-only disabled></label>
+                    <label>Email<input value="rahul@skyhigh.test" data-admin-only disabled></label>
+                    <label>Phone<input value="+91 98765 43210" class="employee-edit" disabled></label>
+                    <label>Address<input value="Bangalore, Karnataka" class="employee-edit" disabled></label>
+                </div>
+            </section>
+
+            <section class="panel">
+                <p class="eyebrow">Job</p>
+                <h2>Job details</h2>
+                <div class="form-grid">
+                    <label>Department<input value="Development" data-admin-only disabled></label>
+                    <label>Manager<input value="Simran Kaur" data-admin-only disabled></label>
+                    <label>Role<input value="Software Engineer" data-admin-only disabled></label>
+                    <label>Work location<input value="Hybrid" data-admin-only disabled></label>
+                </div>
+            </section>
+
+            <section class="panel">
+                <p class="eyebrow">Salary</p>
+                <h2>Salary structure</h2>
+                <div class="form-grid">
+                    <label>Basic<input value="45000" data-admin-only disabled></label>
+                    <label>Allowance<input value="18000" data-admin-only disabled></label>
+                    <label>Deductions<input value="5200" data-admin-only disabled></label>
+                    <label>Net pay<input value="57800" data-admin-only disabled></label>
+                </div>
+            </section>
+
+            <section class="panel documents-panel">
+                <p class="eyebrow">Documents</p>
+                <h2>Documents</h2>
+                <div class="document-list">
+                    <span>Offer letter.pdf</span>
+                    <span>ID proof.pdf</span>
+                    <span>Tax declaration.pdf</span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script_profile.js"></script>
+</body>
+</html>

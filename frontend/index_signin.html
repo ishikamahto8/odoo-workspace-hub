@@ -3,98 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auth Sandbox - Sign In</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Sign In | SkyHigh HRMS</title>
+    <link rel="stylesheet" href="style_signin.css">
 </head>
-<body class="auth-body">
+<body class="auth-page">
+    <main class="auth-shell">
+        <section class="auth-brand" aria-label="SkyHigh HRMS">
+            <div class="brand-mark">SH</div>
+            <h1>SkyHigh HRMS</h1>
+            <p>Secure people operations for attendance, payroll, leave, and employee records.</p>
+        </section>
 
-    <div class="auth-container">
-        <div class="auth-sidebar">
-            <div class="sidebar-content">
-                <div class="sidebar-icon-box">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h2>Skyhigh Management System<br>Core Framework.</h2>
-                <p><strong>Authentication (AuthN):</strong> Proving who you are via verifiable secure credentials.<br><br>
-                   <strong>Authorization (AuthZ):</strong> Defining what specific resources and actions your account has permission to access.</p>
-            </div>
-        </div>
-
-        <div class="auth-form-panel">
-            
-            <div class="auth-form-box">
-                <div class="form-header">
-                    <div class="brand-logo">
-                        <i class="fas fa-key"></i>
-                        <span>SecureVerify</span>
-                    </div>
-                    <p class="form-subtitle">Provide your unique cryptographic identifier tokens to authenticate.</p>
+        <section class="auth-panel">
+            <div class="auth-card">
+                <div class="auth-heading">
+                    <p class="eyebrow">Welcome back</p>
+                    <h2>Sign in</h2>
                 </div>
 
-                <div class="error-banner">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>AuthN Error: Credentials invalid. Security handshake rejected.</span>
+                <div class="alert error-alert" id="signinError" role="alert" hidden>
+                    Incorrect email or password. Try hr@skyhigh.test or employee@skyhigh.test with password123.
                 </div>
 
-                <form action="dashboard.html" method="GET">
-                    <div class="input-group">
-                        <label for="loginEmail">AUTHENTICATION KEY (EMAIL)</label>
-                        <div class="input-wrapper">
-                            <i class="far fa-user input-icon"></i>
-                            <input type="email" id="loginEmail" placeholder="user.identity@domain.io" required>
-                        </div>
+                <form id="signinForm" novalidate>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="name@company.com" required>
+                        <small class="field-error">Enter a valid email address.</small>
                     </div>
 
-                    <div class="input-group">
-                        <div class="label-row">
-                            <label for="loginPassword">SECRET PASSCODE</label>
-                            <a href="#" class="form-link">Reset token?</a>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="password-row">
+                            <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Password" required>
+                            <button class="icon-btn" type="button" id="togglePassword" aria-label="Show password">Show</button>
                         </div>
-                        <div class="input-wrapper">
-                            <i class="fas fa-lock input-icon"></i>
-                            <input type="password" id="loginPassword" placeholder="••••••••••••" required>
-                            <i class="far fa-eye toggle-password"></i>
-                        </div>
+                        <small class="field-error">Password is required.</small>
                     </div>
 
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="rememberDevice">
-                        <label for="rememberDevice">Cache authentication state session for 30 days</label>
-                    </div>
-
-                    <button type="submit" class="btn-primary btn-block">
-                        Verify Identity <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <button class="primary-btn" type="submit">Sign in</button>
                 </form>
 
-                <div class="divider"><span>OR FEDERATED IDENTITY PROVIDERS</span></div>
-
-                <div class="oauth-buttons">
-                    <button class="btn-oauth" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="8" r="4"></circle>
-                        <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
-                        </svg> Azure OpenID
-                    </button>
-                    <button class="btn-oauth" type="button">
-                        <i class="fas fa-fingerprint"></i> SAML SSO
-                    </button>
-                </div>
-
-                <p class="switch-form-text">
-                    Need a new access scope? <a href="signup.html">Register Identity / Configure AuthZ</a>
-                </p>
+                <p class="switch-copy">New employee? <a href="index_signup.html">Create an account</a></p>
             </div>
+        </section>
+    </main>
 
-            <footer class="auth-footer">
-                <p>&copy; SkyHigh Management System 2026</p>
-                <p class="security-meta"></p>
-                <div class="footer-links">
-                    <a href="#">Security Protocol</a> • <a href="#"></a> • <a href="#">Audit Logs</a>
-                </div>
-            </footer>
-        </div>
-    </div>
+    <script src="script_signin.js"></script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+@import url("style_profile.css");
+.module-grid { display: grid; grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.25fr); gap: 20px; }
+.stack-form { display: grid; gap: 16px; }
+.request-list { display: grid; gap: 12px; }
+.request-card { padding: 14px; border: 1px solid var(--line); border-radius: 8px; display: grid; gap: 10px; }
+.request-card p { margin-bottom: 0; color: var(--muted); }
+.request-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.approve-btn, .reject-btn { min-height: 38px; border: 0; border-radius: 8px; color: #ffffff; font-weight: 800; cursor: pointer; }
+.approve-btn { background: var(--success); }
+.reject-btn { background: var(--danger); }
+@media (max-width: 900px) { .module-grid { grid-template-columns: 1fr; } }

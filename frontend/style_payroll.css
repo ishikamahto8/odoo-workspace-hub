@@ -1,0 +1,11 @@
+@import url("style_profile.css");
+.payroll-grid { display: grid; grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.25fr); gap: 20px; }
+.salary-list { display: grid; gap: 12px; }
+.salary-list div { display: flex; justify-content: space-between; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 8px; }
+.salary-list span { color: var(--muted); font-weight: 800; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 13px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+th { color: var(--muted); font-size: 12px; text-transform: uppercase; }
+.update-btn { min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: #ffffff; font-weight: 800; cursor: pointer; }
+@media (max-width: 900px) { .payroll-grid { grid-template-columns: 1fr; } }
