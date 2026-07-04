@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Sandbox - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        <div class="auth-sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-icon-box">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2>AuthN & AuthZ<br>Core Framework.</h2>
+                <p><strong>Authentication (AuthN):</strong> Proving who you are via verifiable secure credentials.<br><br>
+                   <strong>Authorization (AuthZ):</strong> Defining what specific resources and actions your account has permission to access.</p>
+            </div>
+        </div>
+
+        <div class="auth-form-panel">
+            
+            <div class="auth-form-box">
+                <div class="info-banner">
+                    <i class="fas fa-info-circle"></i>
+                    <span>AuthZ Notice: Registration requires a valid tenant token verification step.</span>
+                </div>
+
+                <div class="form-header">
+                    <p class="form-subtitle text-center">Provision Identity & Assign Access Scopes</p>
+                </div>
+
+                <form action="dashboard.html" method="GET">
+                    <div class="input-group">
+                        <label for="tenantId">UNIQUE TENANT OR EMPLOYEE ID</label>
+                        <div class="input-wrapper">
+                            <i class="far fa-id-card input-icon"></i>
+                            <input type="text" id="tenantId" placeholder="e.g. AUTH-SYS-2026-X" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regEmail">REGISTER SYSTEM IDENTITY (EMAIL)</label>
+                        <div class="input-wrapper">
+                            <i class="far fa-envelope input-icon"></i>
+                            <input type="email" id="regEmail" placeholder="identity@domain.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="orgRole">ROLE-BASED ACCESS CONTROL (AUTHORIZATION SCOPE)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user-shield input-icon"></i>
+                            <select id="orgRole" required>
+                                <option value="" disabled selected>Select system permission tier</option>
+                                <option value="admin">Super Administrator (Full Read/Write/Delete)</option>
+                                <option value="manager">Manager Audit Scope (Read/Write Data)</option>
+                                <option value="standard">Standard Consumer (Restricted Read-Only Access)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regPassword">SET COMPLIANT PASSCODE</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="regPassword" placeholder="••••••••" required>
+                            <i class="far fa-eye toggle-password"></i>
+                        </div>
+                        <div class="password-requirements">
+                            <span><i class="far fa-check-circle"></i> Entropy min 8 chrs</span>
+                            <span><i class="far fa-check-circle"></i> Non-alphanumeric token</span>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="termsAgree" required>
+                        <label for="termsAgree">Accept system data governance directives and privacy matrices.</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block">
+                        Initialize Identity <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <p class="switch-form-text">
+                    Possess existing credentials? <a href="signin.html">Return to Sign In</a>
+                </p>
+            </div>
+
+            <footer class="auth-footer">
+                <p>&copy; 2026 Security Framework Sandbox.</p>
+                <p class="security-meta">AES-256 State Encryption Active.</p>
+                <div class="footer-links">
+                    <a href="#">Security Protocol</a> • <a href="#">Token Policy</a> • <a href="#">Audit Logs</a>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+</html>
