@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS Dashboard | Management System</title>
+    <link rel="stylesheet" href="styled.css">
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">HRMS</div>
+        </div>
+        
+        <ul class="nav-center">
+            <li><a href="#" class="active">Employees</a></li>
+            <li><a href="#">Attendance</a></li>
+            <li><a href="#">Time Off</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <div class="status-indicator">
+                <span class="dot green"></span>
+                <span class="status-text">On Duty</span>
+            </div>
+            <div class="profile-container">
+                <img src="https://i.pravatar.cc/150?u=simran" alt="Profile" class="avatar" id="profileAvatar">
+                <!-- Profile Dropdown -->
+                <div class="dropdown" id="profileDropdown">
+                    <a href="#" id="viewProfileBtn">My Profile</a>
+                    <hr>
+                    <a href="#" id="logoutBtn">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- WELCOME HEADER -->
+        <header class="welcome-header">
+            <div class="welcome-text">
+                <h1>Good Morning, Simran</h1>
+                <p>Here’s what’s happening with your team today.</p>
+            </div>
+            <div class="current-date" id="currentDate">
+                July 4, 2024
+            </div>
+        </header>
+
+        <!-- SUMMARY CARDS -->
+        <section class="summary-grid">
+            <div class="card stat-card">
+                <div class="card-icon blue-bg">👥</div>
+                <div class="stat-info">
+                    <span class="stat-label">Total Employees</span>
+                    <h2 class="stat-value">24</h2>
+                    <span class="stat-subtext">4 new this month</span>
+                </div>
+            </div>
+            <div class="card stat-card">
+                <div class="card-icon blue-bg">✅</div>
+                <div class="stat-info">
+                    <span class="stat-label">Present Today</span>
+                    <h2 class="stat-value">19</h2>
+                    <span class="stat-subtext">80% attendance</span>
+                </div>
+            </div>
+            <div class="card stat-card">
+                <div class="card-icon blue-bg">🏖️</div>
+                <div class="stat-info">
+                    <span class="stat-label">On Leave</span>
+                    <h2 class="stat-value">3</h2>
+                    <span class="stat-subtext">Returning tomorrow</span>
+                </div>
+            </div>
+            <div class="card stat-card">
+                <div class="card-icon blue-bg">⏳</div>
+                <div class="stat-info">
+                    <span class="stat-label">Pending Requests</span>
+                    <h2 class="stat-value">2</h2>
+                    <span class="stat-subtext">Requires action</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard-content">
+            <!-- LEFT SECTION: EMPLOYEES -->
+            <section class="employee-section">
+                <div class="section-header">
+                    <h2>Employees</h2>
+                    <div class="search-box">
+                        <input type="text" id="employeeSearch" placeholder="Search employees...">
+                    </div>
+                </div>
+                <div class="employee-grid" id="employeeGrid">
+                    <!-- Cards injected by JavaScript -->
+                </div>
+            </section>
+
+            <!-- RIGHT SECTION: ACTIONS & ACTIVITY -->
+            <aside class="side-panel">
+                <!-- ATTENDANCE CARD -->
+                <div class="card attendance-card">
+                    <h3>Attendance</h3>
+                    <div class="attendance-status">
+                        <span class="status-dot" id="attendanceDot"></span>
+                        <span id="attendanceText">Not Checked In</span>
+                    </div>
+                    <div class="current-time" id="liveTime">00:00:00 AM</div>
+                    <div class="attendance-logs">
+                        <p id="checkInLog">Check In: --</p>
+                        <p id="checkOutLog">Check Out: --</p>
+                    </div>
+                    <div class="button-group">
+                        <button id="checkInBtn" class="btn btn-primary">Check In</button>
+                        <button id="checkOutBtn" class="btn btn-outline" disabled>Check Out</button>
+                    </div>
+                </div>
+
+                <!-- QUICK ACTIONS -->
+                <div class="card quick-actions">
+                    <h3>Quick Actions</h3>
+                    <button class="action-btn" onclick="openProfileModal('Simran Kaur', 'Admin')">View Profile</button>
+                    <button class="action-btn" onclick="alert('Viewing detailed attendance report...')">View Attendance</button>
+                    <button class="action-btn btn-blue" id="applyLeaveBtn">Apply Leave</button>
+                </div>
+
+                <!-- RECENT ACTIVITY -->
+                <div class="card activity-card">
+                    <h3>Recent Activity</h3>
+                    <ul class="activity-list" id="activityList">
+                        <li>
+                            <div class="activity-info">
+                                <p><strong>Rahul</strong> checked in</p>
+                                <small>9:12 AM</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="activity-info">
+                                <p><strong>Priya</strong> submitted leave</p>
+                                <small>8:45 AM</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="activity-info">
+                                <p><strong>Amit</strong> updated profile</p>
+                                <small>Yesterday</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="activity-info">
+                                <p>Leave approved for <strong>Neha</strong></p>
+                                <small>Yesterday</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- MODAL: EMPLOYEE DETAILS -->
+    <div class="modal-overlay" id="employeeModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeEmpModal">&times;</span>
+            <div class="modal-body" id="empModalBody">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: LEAVE REQUEST -->
+    <div class="modal-overlay" id="leaveModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeLeaveModal">&times;</span>
+            <h3>Apply for Leave</h3>
+            <form id="leaveForm">
+                <div class="form-group">
+                    <label>Leave Type</label>
+                    <select required id="leaveType">
+                        <option value="">Select Type</option>
+                        <option value="Paid Leave">Paid Leave</option>
+                        <option value="Sick Leave">Sick Leave</option>
+                        <option value="Unpaid Leave">Unpaid Leave</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>From Date</label>
+                        <input type="date" required id="fromDate">
+                    </div>
+                    <div class="form-group">
+                        <label>To Date</label>
+                        <input type="date" required id="toDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Remarks</label>
+                    <textarea rows="3" id="leaveRemarks" placeholder="Reason for leave..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" id="cancelLeave">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="scriptd.js"></script>
+</body>
+</html>
