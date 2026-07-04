@@ -1,18 +1,14 @@
-const employees = [
-    { id: "EMP101", name: "Rahul Sharma", title: "Software Engineer", dept: "Development", status: "Present", access: "Employee" },
-    { id: "EMP102", name: "Priya Verma", title: "UI/UX Designer", dept: "Design", status: "Leave", access: "Employee" },
-    { id: "EMP103", name: "Amit Patel", title: "Product Manager", dept: "Management", status: "Present", access: "Employee" },
-    { id: "EMP104", name: "Neha Gupta", title: "QA Engineer", dept: "Development", status: "Absent", access: "Employee" },
-    { id: "EMP105", name: "Sanya Iyer", title: "HR Specialist", dept: "Human Resources", status: "Present", access: "Admin / HR" }
-];
-
-let leaveRequests = [
-    { id: 1, name: "Priya Verma", type: "Sick Leave", range: "Jul 8 - Jul 10" },
-    { id: 2, name: "Amit Patel", type: "Paid Leave", range: "Jul 14 - Jul 18" },
-    { id: 3, name: "Rahul Sharma", type: "Unpaid Leave", range: "Jul 21" }
-];
-
+const API_BASE = "http://localhost:5000/api";
+const token = localStorage.getItem("hrmsToken");
 const user = JSON.parse(localStorage.getItem("hrmsUser") || "{}");
+
+if (!token || user.role !== "hr") {
+    window.location.href = "index_signin.html";
+}
+
+let employees = [];
+let leaveRequests = [];
+
 const tableBody = document.querySelector("#employeeTable");
 const approvalList = document.querySelector("#approvalList");
 const searchInput = document.querySelector("#employeeSearch");
@@ -20,16 +16,13 @@ const sidebar = document.querySelector("#sidebar");
 
 document.querySelector("#adminName").textContent = user.name || "HR Officer";
 document.querySelector("#todayLabel").textContent = new Date().toLocaleDateString("en-IN", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    year: "numeric"
+    weekday: "short", day: "numeric", month: "short", year: "numeric"
 });
 
 function renderMetrics() {
     document.querySelector("#employeeCount").textContent = employees.length;
-    document.querySelector("#presentCount").textContent = employees.filter((employee) => employee.status === "Present").length;
     document.querySelector("#pendingLeaveCount").textContent = leaveRequests.length;
+    // Real present count would require filtering actual attendance data here
 }
 
 function renderEmployees(list) {
@@ -37,16 +30,16 @@ function renderEmployees(list) {
         <tr>
             <td>
                 <div class="employee-cell">
-                    <img class="avatar" src="https://i.pravatar.cc/96?u=${employee.id}" alt="${employee.name}">
+                    <img class="avatar" src="${employee.profile_picture_url || `https://i.pravatar.cc/96?u=${employee.id}`}" alt="${employee.first_name || 'User'}">
                     <div>
-                        <strong>${employee.name}</strong><br>
-                        <small>${employee.title}</small>
+                        <strong>${employee.first_name || 'No Name'} ${employee.last_name || ''}</strong><br>
+                        <small>${employee.job_details?.title || 'Employee'}</small>
                     </div>
                 </div>
             </td>
-            <td>${employee.dept}</td>
-            <td><span class="status-pill status-${employee.status.toLowerCase()}">${employee.status}</span></td>
-            <td>${employee.access}</td>
+            <td>${employee.job_details?.department || 'N/A'}</td>
+            <td><span class="status-pill status-present">Active</span></td>
+            <td>${employee.role}</td>
         </tr>
     `).join("");
 }
@@ -61,8 +54,8 @@ function renderApprovals() {
     approvalList.innerHTML = leaveRequests.map((request) => `
         <article class="approval-card">
             <div>
-                <strong>${request.name}</strong>
-                <p>${request.type} · ${request.range}</p>
+                <strong>Employee ID: ${request.user_id}</strong>
+                <p>${request.type} · ${new Date(request.start_date).toLocaleDateString()} to ${new Date(request.end_date).toLocaleDateString()}</p>
             </div>
             <div class="approval-actions">
                 <button class="approve-btn" type="button" data-action="approve" data-id="${request.id}">Approve</button>
@@ -73,35 +66,67 @@ function renderApprovals() {
     renderMetrics();
 }
 
+async function loadAdminData() {
+    try {
+        const profRes = await fetch(`${API_BASE}/profiles`, { headers: { 'Authorization': `Bearer ${token}` } });
+        const profData = await profRes.json();
+        if (profRes.ok) {
+            employees = profData.profiles;
+            renderEmployees(employees);
+            renderMetrics();
+        }
+
+        const leaveRes = await fetch(`${API_BASE}/leaves`, { headers: { 'Authorization': `Bearer ${token}` } });
+        const leaveData = await leaveRes.json();
+        if (leaveRes.ok) {
+            leaveRequests = leaveData.leaveRequests || [];
+            renderApprovals();
+        }
+    } catch (e) {
+        console.error("Error loading admin data", e);
+    }
+}
+
 searchInput.addEventListener("input", () => {
     const term = searchInput.value.trim().toLowerCase();
     const filtered = employees.filter((employee) => {
-        return employee.name.toLowerCase().includes(term) ||
-            employee.dept.toLowerCase().includes(term) ||
-            employee.title.toLowerCase().includes(term);
+        const name = `${employee.first_name} ${employee.last_name}`.toLowerCase();
+        const dept = (employee.job_details?.department || "").toLowerCase();
+        const title = (employee.job_details?.title || "").toLowerCase();
+        return name.includes(term) || dept.includes(term) || title.includes(term);
     });
     renderEmployees(filtered);
 });
 
-approvalList.addEventListener("click", (event) => {
+approvalList.addEventListener("click", async (event) => {
     const button = event.target.closest("button[data-id]");
-    if (!button) {
-        return;
-    }
+    if (!button) return;
+    
+    const leaveId = button.dataset.id;
+    const action = button.dataset.action; 
+    const status = action === 'approve' ? 'Approved' : 'Rejected';
 
-    leaveRequests = leaveRequests.filter((request) => request.id !== Number(button.dataset.id));
-    renderApprovals();
+    try {
+        const res = await fetch(`${API_BASE}/leaves/${leaveId}/review`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+            body: JSON.stringify({ status })
+        });
+        if (res.ok) {
+            leaveRequests = leaveRequests.filter((request) => request.id !== Number(leaveId));
+            renderApprovals();
+        } else {
+            const data = await res.json();
+            alert(data.error);
+        }
+    } catch(e) { console.error(e); }
 });
 
-document.querySelector("#menuBtn").addEventListener("click", () => {
-    sidebar.classList.toggle("is-open");
-});
-
+document.querySelector("#menuBtn").addEventListener("click", () => sidebar.classList.toggle("is-open"));
 document.querySelector("#logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("hrmsToken");
     localStorage.removeItem("hrmsUser");
     window.location.href = "index_signin.html";
 });
 
-renderMetrics();
-renderEmployees(employees);
-renderApprovals();
+loadAdminData();
